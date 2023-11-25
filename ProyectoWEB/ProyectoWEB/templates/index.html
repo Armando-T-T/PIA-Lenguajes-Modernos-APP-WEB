@@ -1,32 +1,45 @@
-{% extends "layout.html" %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/static/content/styles.css">
+    <title>CineAnimeCriticas</title>
+</head>
 
-<div class="text-center">
-    <h1>CineAnimeCriticas</h1>
-</div>
+<body>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Descubre tus peliculas y animes favoritos</h2>
-        <p>
-            Explora resenas detalladas y recomendaciones de peliculas y animes. Encuentra nuevas joyas cinematograficas y animadas para disfrutar.
-        </p>
+    <div class="text-center">
+        <h1>CineAnimeCriticas</h1>
     </div>
-    <div class="col-md-4">
-        <h2>Comparte tus opiniones</h2>
-        <p>
-            Unete a la comunidad y comparte tus propias criticas y opiniones sobre peliculas y animes. Conectate con amantes del cine y anime de todo el mundo.
-        </p>
+
+    <div class="row">
+        <div class="Cuadro">
+            <h2>Descubre tus peliculas y animes favoritos</h2>
+            <p>
+                Explora resenas detalladas y recomendaciones de peliculas y animes. Encuentra nuevas joyas cinematograficas y animadas para disfrutar.
+            </p>
+        </div>
+        <div class="Cuadro">
+            <h2>Comparte tus opiniones</h2>
+            <p>
+                Unete a la comunidad y comparte tus propias criticas y opiniones sobre peliculas y animes. Conectate con amantes del cine y anime de todo el mundo.
+            </p>
+        </div>
+        <div class="Cuadro">
+            <h2>Explora nuestro catalogo</h2>
+            <p>
+                Navega a traves de nuestro extenso catalogo de resenas para encontrar las mejores opciones de entretenimiento. Encuentra la proxima pelicula o serie que veras.
+            </p>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Explora nuestro catalogo</h2>
-        <p>
-            Navega a traves de nuestro extenso catalogo de resenas para encontrar las mejores opciones de entretenimiento. Encuentra la proxima pelicula o serie que veras.
-        </p>
+
+    <div class="btn">
+        <a href="{{ url_for('inicioSesion') }}">Iniciar Sesion</a>
     </div>
-</div>
 
+</body>
 
-
-{% endblock %}
+</html>

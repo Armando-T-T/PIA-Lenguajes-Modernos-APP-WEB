@@ -12,7 +12,7 @@ def home():
     """Renders the home page."""
     return render_template(
         'index.html',
-        title='Home Page',
+        title='Bienvenido',
         year=datetime.now().year,
     )
 
@@ -34,4 +34,14 @@ def about():
         title='About',
         year=datetime.now().year,
         message='Your application description page.'
+    )
+
+
+@app.route('/inicioSesion')
+def inicioSesion():
+    """Renders the inicioS page."""
+    return render_template(
+        'inicioSesion.html',
+        title='Inicia Sesion',
+        year=datetime.now().year,
     )

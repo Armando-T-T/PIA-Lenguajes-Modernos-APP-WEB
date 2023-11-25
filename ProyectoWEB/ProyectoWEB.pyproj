@@ -41,6 +41,8 @@
     <Folder Include="ProyectoWEB\templates\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ProyectoWEB\templates\InicioSesion.html" />
+    <Content Include="ProyectoWEB\static\content\styles.css" />
     <Content Include="requirements.txt" />
     <Content Include="ProyectoWEB\static\content\bootstrap.css" />
     <Content Include="ProyectoWEB\static\content\bootstrap.min.css" />
