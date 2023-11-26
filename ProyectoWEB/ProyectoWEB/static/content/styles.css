@@ -47,11 +47,65 @@ p {
     text-align: center; /* Alinea el botón al centro */
 }
 
-    .btn a {
-        display: inline-block;
-        padding: 10px 20px; /* Ajusta el relleno del botón */
-        background-color: #fff; /* Color de fondo del botón */
-        color: #0518D1; /* Color del texto del botón */
+/* Nuevo estilo específico para la página de inicio de sesión */
+.login-page {
+    background: linear-gradient(to bottom, #0518D1, #6805D1);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-box {
+    background-color: rgba(5, 24, 209, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+    .login-box h2 {
+        margin-bottom: 20px;
+    }
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+    .input-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .input-group input {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+        border: 1px solid #fff;
+        border-radius: 5px;
+    }
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+    .button-group button {
+        padding: 10px 20px;
+        background-color: #fff;
+        color: #0518D1;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .button-group a {
+        padding: 10px 20px;
+        background-color: #fff;
+        color: #0518D1;
         text-decoration: none;
-        border-radius: 5px; /* Bordes redondeados */
+        border-radius: 5px;
+        display: inline-block;
     }

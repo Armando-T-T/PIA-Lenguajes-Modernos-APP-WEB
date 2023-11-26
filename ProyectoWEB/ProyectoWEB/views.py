@@ -5,6 +5,11 @@ Routes and views for the flask application.
 from datetime import datetime
 from flask import render_template
 from ProyectoWEB import app
+from flask import Flask
+from flask import render_template, request
+from flaskext.mysql import MySQL
+
+
 
 @app.route('/')
 @app.route('/home')
