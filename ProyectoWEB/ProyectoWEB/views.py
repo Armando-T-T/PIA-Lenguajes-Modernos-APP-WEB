@@ -20,8 +20,18 @@ class Resena(db.Model):
     contenido = db.Column(db.String(1000), nullable=False)
     id_usuario = db.Column(db.Integer, db.ForeignKey('usuario.id_usuario'))
     nombre_usuario = db.Column(db.String(50))
-
+    id_pelicula = db.Column(db.Integer, db.ForeignKey('pelicula.id_pelicula'))
+    
     usuario = db.relationship('Usuario', backref=db.backref('resenas', lazy=True))
+    pelicula = db.relationship('Pelicula', backref=db.backref('resenas', lazy=True))
+
+class Pelicula(db.Model):
+    id_pelicula = db.Column(db.Integer, primary_key=True)
+    sinopsis = db.Column(db.String(1000), nullable=False)
+    nombre = db.Column(db.String(255), nullable=False)
+    clasificacion = db.Column(db.String(50))
+    duracion = db.Column(db.Integer)
+    fecha_estreno = db.Column(db.Date)
 
 @app.route('/')
 @app.route('/home')
@@ -59,7 +69,7 @@ def inicioSesion():
         usuario = Usuario.query.filter_by(correo=correo, contrasena=contrasena).first()
 
         if usuario:
-            return redirect(url_for('home'))
+            return redirect(url_for('peliculas'))
         else:
             return render_template('inicioSesion.html', title='Inicia Sesion', year=datetime.now().year)
     return render_template('inicioSesion.html', title='Inicia Sesion', year=datetime.now().year)
@@ -82,3 +92,19 @@ def registro():
 
     except Exception as e:
         return f"Error en el servidor: {str(e)}", 500  # Devuelve un código de estado 500 (Internal Server Error)
+    
+@app.route('/peliculas')
+def peliculas():
+    peliculas = Pelicula.query.all()
+    return render_template('peliculas.html', title='Peliculas', year=datetime.now().year, peliculas=peliculas)
+
+@app.route('/peliculas/<int:pelicula_id>/resenas', methods=['GET', 'POST'])
+def resenas(pelicula_id):
+    pelicula = Pelicula.query.get_or_404(pelicula_id)
+    
+    if request.method == 'POST':
+        # Lógica para manejar la creación de nuevas reseñas.
+        # Aquí deberías crear una nueva Resena asociada a la película y guardarla en la base de datos.
+        pass
+
+    return render_template('resenas.html', title=f"Reseñas de {pelicula.nombre}", year=datetime.now().year, pelicula=pelicula)

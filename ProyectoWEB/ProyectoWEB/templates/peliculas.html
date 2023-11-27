@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Películas</title>
+</head>
+
+<body>
+
+    <h1>Lista de Películas</h1>
+
+    {% for pelicula in peliculas %}
+    <div class="pelicula">
+        <h2>{{ pelicula.nombre }}</h2>
+        <p>{{ pelicula.sinopsis }}</p>
+        <p>Clasificación: {{ pelicula.clasificacion }}</p>
+        <p>Duración: {{ pelicula.duracion }} minutos</p>
+        <p>Fecha de Estreno: {{ pelicula.fecha_estreno }}</p>
+        <a href="{{ url_for('resenas', pelicula_id=pelicula.id_pelicula) }}">Ver Reseñas</a>
+    </div>
+    {% endfor %}
+
+</body>
+
+</html>
