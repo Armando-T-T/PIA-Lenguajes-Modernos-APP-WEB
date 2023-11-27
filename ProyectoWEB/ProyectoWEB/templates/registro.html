@@ -10,27 +10,31 @@
 
 <body>
 
-    <div class="text-center">
-        <h1>Registro</h1>
-    </div>
+    <div class="container login-page">
+        <div class="login-box">
+            <h2>Registro</h2>
+            <form action="{{ url_for('registro') }}" method="post">
+                <div class="input-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
 
-    <form action="{{ url_for('registro') }}" method="post">
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" required><br>
+                <div class="input-group">
+                    <label for="correo">Correo:</label>
+                    <input type="email" id="correo" name="correo" required>
+                </div>
 
-        <label for="correo">Correo:</label>
-        <input type="email" id="correo" name="correo" required><br>
+                <div class="input-group">
+                    <label for="contrasena">Contraseña:</label>
+                    <input type="password" id="contrasena" name="contrasena" required>
+                </div>
 
-        <label for="constrasena">Contraseña:</label>
-        <input type="password" id="contrasena" name="contrasena" required><br>
-
-        <button type="submit">Registrar</button>
-    </form>
-
-    <br>
-
-    <div class="btn">
-        <a href="{{ url_for('inicioSesion') }}">Ir a Inicio de Sesión</a>
+                <div class="button-group">
+                    <button type="submit" class="btn">Registrar</button>
+                    <a href="{{ url_for('inicioSesion') }}" class="btn">Volver</a>
+                </div>
+            </form>
+        </div>
     </div>
 
 </body>

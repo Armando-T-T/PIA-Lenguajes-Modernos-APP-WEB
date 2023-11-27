@@ -12,7 +12,6 @@
 <body>
 
     <div class="container login-page">
-        <!-- Agregado la clase login-page -->
         <div class="login-box">
             <h2>Iniciar Sesión</h2>
             <form action="/login" method="post">
@@ -27,8 +26,8 @@
                 </div>
 
                 <div class="button-group">
-                    <button type="submit">Iniciar Sesión</button>
-                    <a href="{{ url_for('registro') }}">Regístrate</a>
+                    <button type="submit" class="btn">Iniciar Sesión</button>
+                    <a href="{{ url_for('registro') }}" class="btn">Regístrate</a>
                 </div>
             </form>
         </div>

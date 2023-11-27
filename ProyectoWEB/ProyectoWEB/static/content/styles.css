@@ -2,7 +2,7 @@ body {
     font-family: 'Sans Serif', sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(to bottom, #0518D1, #6805D1);
+    background: linear-gradient(to bottom, #CA08E1, #6805D1);
     color: #fff;
     min-height: 100vh;
     display: flex;
@@ -44,12 +44,12 @@ p {
 .btn {
     margin-top: auto;
     margin-bottom: 15px;
-    text-align: center; /* Alinea el bot�n al centro */
+    text-align: center; /* Alinea el botón al centro */
 }
 
-/* Nuevo estilo espec�fico para la p�gina de inicio de sesi�n */
+/* Estilo específico para la página de inicio de sesión y registro */
 .login-page {
-    background: linear-gradient(to bottom, #0518D1, #6805D1);
+    background: linear-gradient(to bottom, #0AADEF, #6805D1);
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -62,50 +62,80 @@ p {
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-align: center;
+    max-width: 400px; /* Ajusta el ancho máximo */
+    width: 100%; /* Asegura que ocupe el 100% del ancho disponible */
+    margin: 0 auto; /* Centra el cuadro */
 }
 
-    .login-box h2 {
-        margin-bottom: 20px;
-    }
+.login-box h2 {
+    margin-bottom: 20px;
+}
 
 .input-group {
     margin-bottom: 15px;
+    text-align: left; /* Alinea el texto a la izquierda */
 }
 
-    .input-group label {
-        display: block;
-        margin-bottom: 5px;
-        font-weight: bold;
-    }
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
 
-    .input-group input {
-        width: 100%;
-        padding: 8px;
-        box-sizing: border-box;
-        margin-bottom: 10px;
-        border: 1px solid #fff;
-        border-radius: 5px;
-    }
+.input-group input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    border: 1px solid #fff;
+    border-radius: 5px;
+}
 
 .button-group {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan cuando no hay suficiente espacio */
 }
 
-    .button-group button {
-        padding: 10px 20px;
-        background-color: #fff;
-        color: #0518D1;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
+.button-group button,
+.button-group a {
+    flex: 1; /* Ocupa todo el espacio disponible */
+    padding: 10px 20px;
+    background-color: #fff;
+    color: #0518D1;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 10px; /* Añade un margen inferior para separar los botones */
+    text-decoration: none; /* Quita el subrayado de los enlaces */
+    font-size: 1em; /* Tamaño de fuente */
+    transition: background-color 0.3s, color 0.3s; /* Agrega transición suave */
+}
 
-    .button-group a {
-        padding: 10px 20px;
-        background-color: #fff;
-        color: #0518D1;
-        text-decoration: none;
-        border-radius: 5px;
-        display: inline-block;
-    }
+.button-group button:hover,
+.button-group a:hover {
+    background-color: #0518D1;
+    color: #fff;
+}
+
+.index-btn {
+    margin: 15px auto; /* Centra el botón y añade un espacio en la parte superior e inferior */
+    width: auto; /* Ajusta el ancho automáticamente al contenido */
+    text-align: center; /* Alinea el texto al centro */
+}
+
+.index-btn a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #fff;
+    color: #0518D1;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Agregado para la transición de color de fondo al pasar el mouse */
+}
+
+.index-btn a:hover {
+    background-color: #0518D1; /* Cambia el color de fondo al pasar el mouse */
+    color: #fff; /* Cambia el color del texto al pasar el mouse */
+}
