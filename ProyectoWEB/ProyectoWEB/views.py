@@ -3,15 +3,25 @@ from flask import render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from ProyectoWEB import app
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/sistema'
+# Configuración de la conexión a la base de datos SQL Server
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mssql+pyodbc://servidor:armando@(localdb)\\Servidor/SERVIDORSQL?driver=ODBC+Driver+17+for+SQL+Server'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 class Usuario(db.Model):
-    id_Usuario = db.Column(db.Integer, primary_key=True)
-    Nombre = db.Column(db.String(255))
-    correo = db.Column(db.String(255), unique=True)
-    contrasena = db.Column(db.String(255))
+    id_usuario = db.Column(db.Integer, primary_key=True)
+    nombre = db.Column(db.String(255), unique=True, nullable=False)
+    correo = db.Column(db.String(255), unique=True, nullable=False)
+    contrasena = db.Column(db.String(255), nullable=False)
+
+class Resena(db.Model):
+    id_resena = db.Column(db.Integer, primary_key=True)
+    fecha = db.Column(db.DateTime, default=datetime.now())
+    contenido = db.Column(db.String(1000), nullable=False)
+    id_usuario = db.Column(db.Integer, db.ForeignKey('usuario.id_usuario'))
+    nombre_usuario = db.Column(db.String(50))
+
+    usuario = db.relationship('Usuario', backref=db.backref('resenas', lazy=True))
 
 @app.route('/')
 @app.route('/home')
@@ -60,9 +70,9 @@ def registro():
         if request.method == 'POST':
             nombre = request.form['nombre']
             correo = request.form['correo']
-            contrasena = request.form['contrasena']  # Asegúrate de que el nombre de la columna sea correcto
+            contrasena = request.form['contrasena']
 
-            nuevo_usuario = Usuario(Nombre=nombre, correo=correo, contrasena=contrasena)
+            nuevo_usuario = Usuario(nombre=nombre, correo=correo, contrasena=contrasena)
             db.session.add(nuevo_usuario)
             db.session.commit()
 
