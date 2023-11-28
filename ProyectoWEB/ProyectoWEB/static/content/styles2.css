@@ -1,0 +1,33 @@
+/* Estilos adicionales para la página con fondo degradado */
+body {
+    font-family: 'TuFuente', sans-serif;
+    background: linear-gradient(to right, #E81919, #E97B06);
+    color: white; /* Ajusta el color del texto para que sea legible sobre el fondo */
+    padding: 20px; /* Ajusta según sea necesario */
+}
+
+/* Estilo para el banner rojo con sombra en el título */
+h1 {
+    background: linear-gradient(to right, #CE0000, #DE6800);
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    font-family: 'TuFuente', sans-serif;
+}
+
+/* Estilos adicionales para la página */
+.pelicula-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.pelicula-imagen {
+    max-width: 200px;
+    height: auto;
+    margin-right: 20px;
+}
+
+.pelicula-info {
+    flex: 1;
+}

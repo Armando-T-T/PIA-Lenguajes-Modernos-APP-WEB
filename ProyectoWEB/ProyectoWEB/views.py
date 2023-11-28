@@ -86,7 +86,7 @@ def registro():
             db.session.add(nuevo_usuario)
             db.session.commit()
 
-            return redirect(url_for('home'))
+            return redirect(url_for('inicioSesion'))
 
         return render_template('registro.html', title='Regístrate', year=datetime.now().year)
 
@@ -98,13 +98,17 @@ def peliculas():
     peliculas = Pelicula.query.all()
     return render_template('peliculas.html', title='Peliculas', year=datetime.now().year, peliculas=peliculas)
 
+# Ruta que maneja las reseñas de una película específica
 @app.route('/peliculas/<int:pelicula_id>/resenas', methods=['GET', 'POST'])
 def resenas(pelicula_id):
     pelicula = Pelicula.query.get_or_404(pelicula_id)
-    
+
     if request.method == 'POST':
         # Lógica para manejar la creación de nuevas reseñas.
         # Aquí deberías crear una nueva Resena asociada a la película y guardarla en la base de datos.
         pass
 
-    return render_template('resenas.html', title=f"Reseñas de {pelicula.nombre}", year=datetime.now().year, pelicula=pelicula)
+    # Consultar las reseñas filtradas por id_pelicula
+    reseñas_pelicula = Resena.query.filter_by(id_pelicula=pelicula_id).all()
+
+    return render_template('resenas.html', title=f"Reseñas de {pelicula.nombre}", year=datetime.now().year, pelicula=pelicula, reseñas=reseñas_pelicula)

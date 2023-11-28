@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Encabezado y estilos -->
+
+<body>
+
+    <h1>Reseñas de {{ pelicula.nombre }}</h1>
+
+    <div class="pelicula-info">
+        <h2>{{ pelicula.nombre }}</h2>
+        <p>{{ pelicula.sinopsis }}</p>
+        <p>Clasificación: {{ pelicula.clasificacion }}</p>
+        <p>Duración: {{ pelicula.duracion }} minutos</p>
+        <p>Fecha de Estreno: {{ pelicula.fecha_estreno }}</p>
+    </div>
+
+    <!-- Iterar sobre las reseñas y mostrar la información -->
+    {% for resena in reseñas %}
+    <div class="resena">
+        <p>Fecha: {{ resena.fecha }}</p>
+        <p>Contenido: {{ resena.contenido }}</p>
+        <p>Usuario: {{ resena.nombre_usuario }}</p>
+    </div>
+    {% endfor %}
+
+    <!-- Formulario para agregar nuevas reseñas (si es necesario) -->
+
+</body>
+
+</html>
