@@ -22,7 +22,8 @@
             <p>Clasificación: {{ pelicula.clasificacion }}</p>
             <p>Duración: {{ pelicula.duracion }} minutos</p>
             <p>Fecha de Estreno: {{ pelicula.fecha_estreno }}</p>
-            <a href="{{ url_for('resenas', pelicula_id=pelicula.id_pelicula) }}">Ver Reseñas</a>
+            <a href="{{ url_for('resenas', pelicula_id=pelicula.id_pelicula, user_id=user_id, user_name=user_name) }}">Ver Reseñas</a>
+
         </div>
     </div>
     {% endfor %}

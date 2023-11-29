@@ -69,7 +69,8 @@ def inicioSesion():
         usuario = Usuario.query.filter_by(correo=correo, contrasena=contrasena).first()
 
         if usuario:
-            return redirect(url_for('peliculas'))
+            # Redirigir a la página de películas con los parámetros de usuario
+            return redirect(url_for('peliculas', user_name=usuario.nombre, user_id=usuario.id_usuario))
         else:
             return render_template('inicioSesion.html', title='Inicia Sesion', year=datetime.now().year)
     return render_template('inicioSesion.html', title='Inicia Sesion', year=datetime.now().year)
@@ -93,22 +94,63 @@ def registro():
     except Exception as e:
         return f"Error en el servidor: {str(e)}", 500  # Devuelve un código de estado 500 (Internal Server Error)
     
+# Ruta de películas
 @app.route('/peliculas')
 def peliculas():
+    user_name = request.args.get('user_name')
+    user_id = request.args.get('user_id')
     peliculas = Pelicula.query.all()
-    return render_template('peliculas.html', title='Peliculas', year=datetime.now().year, peliculas=peliculas)
+    print(user_id)
+    return render_template('peliculas.html', title='Peliculas', year=datetime.now().year, peliculas=peliculas, user_name=user_name, user_id=user_id)
+
 
 # Ruta que maneja las reseñas de una película específica
 @app.route('/peliculas/<int:pelicula_id>/resenas', methods=['GET', 'POST'])
 def resenas(pelicula_id):
     pelicula = Pelicula.query.get_or_404(pelicula_id)
+    
+    user_name = request.args.get('user_name')
+    user_id = request.args.get('user_id')
 
     if request.method == 'POST':
-        # Lógica para manejar la creación de nuevas reseñas.
-        # Aquí deberías crear una nueva Resena asociada a la película y guardarla en la base de datos.
-        pass
+        contenido = request.form['contenido']
+
+        # Crear una nueva Resena con los datos proporcionados
+        nueva_resena = Resena(
+            contenido=contenido,
+            id_usuario=user_id,
+            nombre_usuario=user_name,
+            id_pelicula=pelicula_id
+        )
+
+        # Agregar la nueva reseña a la base de datos
+        db.session.add(nueva_resena)
+        db.session.commit()
+
+        # Redirigir a la página de reseñas después de agregar una nueva reseña
+        return redirect(url_for('resenas', pelicula_id=pelicula_id, user_name=user_name, user_id=user_id))
 
     # Consultar las reseñas filtradas por id_pelicula
     reseñas_pelicula = Resena.query.filter_by(id_pelicula=pelicula_id).all()
 
-    return render_template('resenas.html', title=f"Reseñas de {pelicula.nombre}", year=datetime.now().year, pelicula=pelicula, reseñas=reseñas_pelicula)
+    return render_template('resenas.html', title=f"Reseñas de {pelicula.nombre}", year=datetime.now().year, pelicula=pelicula, reseñas=reseñas_pelicula, user_name=user_name, user_id=user_id)
+
+@app.route('/peliculas/<int:pelicula_id>/resenas/<int:resena_id>/eliminar', methods=['POST'])
+def eliminar_resena(pelicula_id, resena_id):
+
+    user_name = request.args.get('user_name')
+    user_id = int(request.args.get('user_id'))
+
+    # Obtener la reseña de la base de datos
+    resena = Resena.query.get_or_404(resena_id)
+
+    # Verificar si el usuario actual es el propietario de la reseña
+    if resena.id_usuario != user_id:
+        return redirect(url_for('resenas', pelicula_id=pelicula_id, user_name=user_name, user_id=user_id))
+
+    # Eliminar la reseña de la base de datos
+    db.session.delete(resena)
+    db.session.commit()
+
+    # Redirigir a la página de reseñas después de eliminar la reseña
+    return redirect(url_for('resenas', pelicula_id=pelicula_id, user_name=user_name, user_id=user_id))

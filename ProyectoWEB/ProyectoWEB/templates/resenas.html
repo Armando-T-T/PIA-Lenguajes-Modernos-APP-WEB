@@ -14,17 +14,23 @@
         <p>Fecha de Estreno: {{ pelicula.fecha_estreno }}</p>
     </div>
 
-    <!-- Iterar sobre las reseñas y mostrar la información -->
     {% for resena in reseñas %}
     <div class="resena">
-        <p>Fecha: {{ resena.fecha }}</p>
-        <p>Contenido: {{ resena.contenido }}</p>
-        <p>Usuario: {{ resena.nombre_usuario }}</p>
+        <p>{{ resena.contenido }}</p>
+        <p>{{ resena.fecha }} - {{ resena.nombre_usuario }}</p>
+        <form action="{{ url_for('eliminar_resena', resena_id=resena.id_resena, pelicula_id=pelicula.id_pelicula, user_name=user_name, user_id=user_id) }}" method="post">
+            <button type="submit" class="eliminar-button">Eliminar</button>
+        </form>
     </div>
     {% endfor %}
 
-    <!-- Formulario para agregar nuevas reseñas (si es necesario) -->
-
+    <h3>Añadir Reseña</h3>
+    <form method="post" action="{{ url_for('resenas', pelicula_id=pelicula.id_pelicula, user_name=user_name, user_id=user_id) }}">
+        <label for="contenido">Contenido:</label>
+        <textarea id="contenido" name="contenido" required></textarea>
+        <br>
+        <input type="submit" value="Enviar Reseña">
+    </form>
 </body>
 
 </html>
