@@ -44,10 +44,9 @@ p {
 .btn {
     margin-top: auto;
     margin-bottom: 15px;
-    text-align: center; /* Alinea el botón al centro */
+    text-align: center; 
 }
 
-/* Estilo específico para la página de inicio de sesión y registro */
 .login-page {
     background: linear-gradient(to bottom, #0AADEF, #6805D1);
     min-height: 100vh;
@@ -62,9 +61,9 @@ p {
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-align: center;
-    max-width: 400px; /* Ajusta el ancho máximo */
-    width: 100%; /* Asegura que ocupe el 100% del ancho disponible */
-    margin: 0 auto; /* Centra el cuadro */
+    max-width: 400px; 
+    width: 100%; 
+    margin: 0 auto; 
 }
 
 .login-box h2 {
@@ -73,7 +72,7 @@ p {
 
 .input-group {
     margin-bottom: 15px;
-    text-align: left; /* Alinea el texto a la izquierda */
+    text-align: left; 
 }
 
 .input-group label {
@@ -94,22 +93,22 @@ p {
 .button-group {
     display: flex;
     justify-content: space-around;
-    flex-wrap: wrap; /* Permite que los elementos se envuelvan cuando no hay suficiente espacio */
+    flex-wrap: wrap; 
 }
 
 .button-group button,
 .button-group a {
-    flex: 1; /* Ocupa todo el espacio disponible */
+    flex: 1; 
     padding: 10px 20px;
     background-color: #fff;
     color: #0518D1;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-bottom: 10px; /* Añade un margen inferior para separar los botones */
-    text-decoration: none; /* Quita el subrayado de los enlaces */
-    font-size: 1em; /* Tamaño de fuente */
-    transition: background-color 0.3s, color 0.3s; /* Agrega transición suave */
+    margin-bottom: 10px; 
+    text-decoration: none; 
+    font-size: 1em; 
+    transition: background-color 0.3s, color 0.3s; 
 }
 
 .button-group button:hover,
@@ -119,9 +118,9 @@ p {
 }
 
 .index-btn {
-    margin: 15px auto; /* Centra el botón y añade un espacio en la parte superior e inferior */
-    width: auto; /* Ajusta el ancho automáticamente al contenido */
-    text-align: center; /* Alinea el texto al centro */
+    margin: 15px auto; 
+    width: auto; 
+    text-align: center;
 }
 
 .index-btn a {
@@ -132,10 +131,10 @@ p {
     text-decoration: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s; /* Agregado para la transición de color de fondo al pasar el mouse */
+    transition: background-color 0.3s; 
 }
 
 .index-btn a:hover {
-    background-color: #0518D1; /* Cambia el color de fondo al pasar el mouse */
-    color: #fff; /* Cambia el color del texto al pasar el mouse */
+    background-color: #0518D1; 
+    color: #fff; 
 }

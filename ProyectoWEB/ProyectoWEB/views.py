@@ -3,7 +3,6 @@ from flask import render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from ProyectoWEB import app
 
-# Configuración de la conexión a la base de datos SQL Server
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mssql+pyodbc://servidor:armando@(localdb)\\Servidor/SERVIDORSQL?driver=ODBC+Driver+17+for+SQL+Server'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
@@ -69,7 +68,6 @@ def inicioSesion():
         usuario = Usuario.query.filter_by(correo=correo, contrasena=contrasena).first()
 
         if usuario:
-            # Redirigir a la página de películas con los parámetros de usuario
             return redirect(url_for('peliculas', user_name=usuario.nombre, user_id=usuario.id_usuario))
         else:
             return render_template('inicioSesion.html', title='Inicia Sesion', year=datetime.now().year)
@@ -92,9 +90,8 @@ def registro():
         return render_template('registro.html', title='Regístrate', year=datetime.now().year)
 
     except Exception as e:
-        return f"Error en el servidor: {str(e)}", 500  # Devuelve un código de estado 500 (Internal Server Error)
-    
-# Ruta de películas
+        return f"Error en el servidor: {str(e)}", 500 
+
 @app.route('/peliculas')
 def peliculas():
     user_name = request.args.get('user_name')
@@ -103,8 +100,6 @@ def peliculas():
     print(user_id)
     return render_template('peliculas.html', title='Peliculas', year=datetime.now().year, peliculas=peliculas, user_name=user_name, user_id=user_id)
 
-
-# Ruta que maneja las reseñas de una película específica
 @app.route('/peliculas/<int:pelicula_id>/resenas', methods=['GET', 'POST'])
 def resenas(pelicula_id):
     pelicula = Pelicula.query.get_or_404(pelicula_id)
@@ -115,7 +110,7 @@ def resenas(pelicula_id):
     if request.method == 'POST':
         contenido = request.form['contenido']
 
-        # Crear una nueva Resena con los datos proporcionados
+
         nueva_resena = Resena(
             contenido=contenido,
             id_usuario=user_id,
@@ -123,14 +118,12 @@ def resenas(pelicula_id):
             id_pelicula=pelicula_id
         )
 
-        # Agregar la nueva reseña a la base de datos
         db.session.add(nueva_resena)
         db.session.commit()
 
-        # Redirigir a la página de reseñas después de agregar una nueva reseña
         return redirect(url_for('resenas', pelicula_id=pelicula_id, user_name=user_name, user_id=user_id))
 
-    # Consultar las reseñas filtradas por id_pelicula
+
     reseñas_pelicula = Resena.query.filter_by(id_pelicula=pelicula_id).all()
 
     return render_template('resenas.html', title=f"Reseñas de {pelicula.nombre}", year=datetime.now().year, pelicula=pelicula, reseñas=reseñas_pelicula, user_name=user_name, user_id=user_id)
@@ -141,16 +134,14 @@ def eliminar_resena(pelicula_id, resena_id):
     user_name = request.args.get('user_name')
     user_id = int(request.args.get('user_id'))
 
-    # Obtener la reseña de la base de datos
+
     resena = Resena.query.get_or_404(resena_id)
 
-    # Verificar si el usuario actual es el propietario de la reseña
     if resena.id_usuario != user_id:
         return redirect(url_for('resenas', pelicula_id=pelicula_id, user_name=user_name, user_id=user_id))
 
-    # Eliminar la reseña de la base de datos
+
     db.session.delete(resena)
     db.session.commit()
 
-    # Redirigir a la página de reseñas después de eliminar la reseña
     return redirect(url_for('resenas', pelicula_id=pelicula_id, user_name=user_name, user_id=user_id))
