@@ -1,21 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/static/content/styles3.css">
+    <title>Reseñas de {{ pelicula.nombre }}</title>
+</head>
 <body>
 
     <h1>Reseñas de {{ pelicula.nombre }}</h1>
 
-    <div class="pelicula-info">
-        <h2>{{ pelicula.nombre }}</h2>
-        <p>{{ pelicula.sinopsis }}</p>
-        <p>Clasificación: {{ pelicula.clasificacion }}</p>
-        <p>Duración: {{ pelicula.duracion }} minutos</p>
-        <p>Fecha de Estreno: {{ pelicula.fecha_estreno }}</p>
+    <div class="pelicula-container">
+        <img src="/static/images/imagen{{ pelicula.id_pelicula }}.png" alt="Imagen de {{ pelicula.nombre }}" class="pelicula-imagen">
+        <div class="pelicula-info">
+            <h2>{{ pelicula.nombre }}</h2>
+            <p>{{ pelicula.sinopsis }}</p>
+            <p>Clasificación: {{ pelicula.clasificacion }}</p>
+            <p>Duración: {{ pelicula.duracion }} minutos</p>
+            <p>Fecha de Estreno: {{ pelicula.fecha_estreno }}</p>
+        </div>
     </div>
 
     {% for resena in reseñas %}
     <div class="resena">
+        <p class="fecha">{{ resena.nombre_usuario }} - {{ resena.fecha.strftime('%d/%m/%Y %H:%M') }} </p>
         <p>{{ resena.contenido }}</p>
-        <p>{{ resena.fecha }} - {{ resena.nombre_usuario }}</p>
         <form action="{{ url_for('eliminar_resena', resena_id=resena.id_resena, pelicula_id=pelicula.id_pelicula, user_name=user_name, user_id=user_id) }}" method="post">
             <button type="submit" class="eliminar-button">Eliminar</button>
         </form>
@@ -27,7 +38,10 @@
         <label for="contenido">Contenido:</label>
         <textarea id="contenido" name="contenido" required></textarea>
         <br>
-        <input type="submit" value="Enviar Reseña">
+        <button type="submit" class="reseña-button">Enviar Reseña</button>
+    </form>
+    <form action="{{ url_for('peliculas', user_name=user_name, user_id=user_id) }}" method="get">
+        <button type="submit" class="regresar-button">Regresar a Películas</button>
     </form>
 </body>
 

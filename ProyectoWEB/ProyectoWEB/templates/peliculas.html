@@ -27,6 +27,9 @@
         </div>
     </div>
     {% endfor %}
+    <form action="{{ url_for('inicioSesion') }}" method="get">
+        <button type="submit" class="button-group">Cerrar Sesión</button>
+    </form>
 
 </body>
 

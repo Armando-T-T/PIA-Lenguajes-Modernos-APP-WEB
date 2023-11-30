@@ -1,0 +1,135 @@
+body {
+    font-family: 'TuFuente', sans-serif;
+    background: linear-gradient(to right, #E97B06, #FFFF00);
+    color: white;
+    padding: 20px;
+}
+
+h1 {
+    background: linear-gradient(to right, #DE6800, #FAFA03);
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    font-family: 'TuFuente', sans-serif;
+}
+
+.pelicula-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.pelicula-imagen {
+    max-width: 200px;
+    height: auto;
+    margin-right: 20px;
+}
+
+.pelicula-info {
+    flex: 1;
+}
+
+
+.regresar-button {
+    padding: 15px 30px; 
+    background-color: #ff0000; 
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 1em;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.regresar-button:hover {
+    background-color: white;
+    color: #ff0000;
+}
+
+.eliminar-button {
+    padding: 10px 20px;
+    background-color: #ff0000; 
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 1em;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.eliminar-button:hover {
+    background-color: white;
+    color: #ff0000;
+}
+
+
+.resena {
+    background-color: #FFE4B5; 
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+
+.fecha {
+    font-weight: bold;
+}
+
+form {
+    max-width: 500px;
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 10px;
+}
+
+input[type="submit"] {
+    padding: 15px 30px;
+    background-color: #FF4500; 
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: white;
+    color: #FF4500;
+}
+
+
+.resena {
+    background-color: #FFE4B5; 
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+.reseña-button {
+    padding: 15px 30px; 
+    background-color: #FF4500; 
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 1em;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.reseña-button:hover {
+    background-color: white;
+    color: #FF4500;
+}

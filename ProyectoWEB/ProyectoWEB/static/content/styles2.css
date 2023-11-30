@@ -28,3 +28,19 @@ h1 {
 .pelicula-info {
     flex: 1;
 }
+.button-group {
+    background-color: #0518D1;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.button-group:hover {
+    background-color: #fff;
+    color: #0518D1;
+}
